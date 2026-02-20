@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samkran Ilm · Arabic & Dhikr</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <h1><span class="arabic-logo">اللغة العربية</span> · Arabic & Dhikr</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="names.html">Names of Allah</a>
+        <a href="arabic.html" class="active">Arabic & Dhikr</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Tabs for different sections -->
+      <div class="tabs-container">
+        <button class="tab-btn active" data-tab="words">📚 Qur'anic Words</button>
+        <button class="tab-btn" data-tab="phrases">🕌 Islamic Phrases</button>
+        <button class="tab-btn" data-tab="roots">🌳 Root System</button>
+        <button class="tab-btn" data-tab="dhikr">🔄 Dhikr Slideshow</button>
+      </div>
+
+      <!-- Words Tab -->
+      <div id="words-tab" class="tab-content active">
+        <div class="section-header">
+          <h2>📖 <span id="wordCount">300+</span> Most Common Qur'anic Words</h2>
+          <input type="text" id="wordSearch" class="search-box" placeholder="Search words...">
+        </div>
+        
+        <div class="words-grid" id="wordsGridContainer">
+          <!-- Dynamically filled from arabicData.js -->
+          <div class="loading-message">Loading words...</div>
+        </div>
+      </div>
+
+      <!-- Phrases Tab -->
+      <div id="phrases-tab" class="tab-content hidden">
+        <div class="section-header">
+          <h2>🕌 <span id="phraseCount">200+</span> Essential Islamic Phrases</h2>
+          <input type="text" id="phraseSearch" class="search-box" placeholder="Search phrases...">
+        </div>
+        
+        <div class="phrases-list" id="phrasesListContainer">
+          <!-- Dynamically filled from arabicData.js -->
+          <div class="loading-message">Loading phrases...</div>
+        </div>
+      </div>
+
+      <!-- Roots Tab -->
+      <div id="roots-tab" class="tab-content hidden">
+        <h2>🌳 Understanding Arabic Roots</h2>
+        
+        <div class="roots-grid" id="rootsGrid">
+          <!-- Static root examples since we removed roots from data -->
+          <div class="root-card">
+            <div class="root-letters">ك-ت-ب</div>
+            <div class="root-meaning">Writing</div>
+            <ul class="root-words">
+              <li>كتب <span>he wrote</span></li>
+              <li>كتاب <span>book</span></li>
+              <li>كاتب <span>writer</span></li>
+              <li>مكتبة <span>library</span></li>
+            </ul>
+          </div>
+          <div class="root-card">
+            <div class="root-letters">ق-و-ل</div>
+            <div class="root-meaning">Saying</div>
+            <ul class="root-words">
+              <li>قال <span>he said</span></li>
+              <li>قول <span>speech</span></li>
+              <li>قائل <span>speaker</span></li>
+              <li>مقالة <span>article</span></li>
+            </ul>
+          </div>
+          <div class="root-card">
+            <div class="root-letters">ع-ل-م</div>
+            <div class="root-meaning">Knowledge</div>
+            <ul class="root-words">
+              <li>علم <span>knowledge</span></li>
+              <li>عالم <span>scholar</span></li>
+              <li>تعلم <span>learning</span></li>
+              <li>معلوم <span>known</span></li>
+            </ul>
+          </div>
+          <div class="root-card">
+            <div class="root-letters">ر-ح-م</div>
+            <div class="root-meaning">Mercy</div>
+            <ul class="root-words">
+              <li>رحمة <span>mercy</span></li>
+              <li>رحمن <span>Most Gracious</span></li>
+              <li>رحيم <span>Most Merciful</span></li>
+              <li>مرحوم <span>blessed with mercy</span></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="info-box">
+          <h3>How Roots Work</h3>
+          <p>Most Arabic words derive from a 3-letter root. This root gives the core meaning, and different patterns create related words.</p>
+        </div>
+      </div>
+
+      <!-- Dhikr Slideshow Tab -->
+      <div id="dhikr-tab" class="tab-content hidden">
+        <div class="slideshow-container">
+          <div class="slideshow-arabic" id="slideshowArabic">سُبْحَانَ اللَّهِ</div>
+          <div class="slideshow-translit" id="slideshowTranslit">SubḥānAllāh</div>
+          <div class="slideshow-meaning" id="slideshowMeaning">Glory be to Allah</div>
+          <div class="slideshow-count" id="slideshowCount">Recommended: 33 times</div>
+          
+          <div class="slideshow-nav">
+            <button class="nav-btn" id="slideshowPrev">← Previous</button>
+            <button class="nav-btn" id="slideshowNext">Next →</button>
+          </div>
+          
+          <div class="timer-note">Auto-updates every 5 minutes</div>
+        </div>
+        
+        <!-- Dedicated Tasbih Counter -->
+        <div class="counter-card">
+          <h3>📿 Tasbih for Current Dhikr</h3>
+          <div class="current-dhikr" id="currentDhikrName">SubḥānAllāh</div>
+          <div class="counter-large">
+            <button class="counter-large-btn" id="slideshowCounterPlus">+</button>
+            <span class="counter-large-value" id="slideshowCounterValue">0</span>
+            <button class="counter-large-btn" id="slideshowCounterReset">↺</button>
+          </div>
+          <div class="counter-presets">
+            <button class="preset-btn" id="setTarget33">33</button>
+            <button class="preset-btn" id="setTarget100">100</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khutbah Words Section -->
+      <section class="khutbah-section">
+        <h2>🕌 Khutbah Understanding Kit</h2>
+        <div class="khutbah-grid" id="khutbahGrid">
+          <!-- Filled with khutbah-specific vocabulary -->
+          <div class="loading-message">Loading khutbah words...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>🤲 understanding the Qur'an begins with its words</p>
+    </footer>
+  </div>
+
+  <script src="js/arabicData.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

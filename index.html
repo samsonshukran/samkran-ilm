@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samkran Ilm · Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <h1><span class="arabic-logo">سَمرقان</span> · Samkran Ilm</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="names.html">Names of Allah</a>
+        <a href="arabic.html">Arabic & Dhikr</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="dashboard">
+        <!-- Name of the Day Card -->
+        <div class="card" id="nameOfDayCard">
+          <div class="card-header">
+            <span class="card-icon">🌟</span>
+            <h2>Name of the Day</h2>
+          </div>
+          <div class="card-body">
+            <div class="arabic-large" id="dailyNameArabic">الرحمن</div>
+            <div class="transliteration" id="dailyNameTranslit">Ar-Raḥmān</div>
+            <div class="meaning" id="dailyNameMeaning">The Most Gracious</div>
+            <div class="reflection-box" id="dailyNameReflection">
+              Allah's mercy encompasses all of creation.
+            </div>
+            <div class="dua-box" id="dailyNameDua">
+              <span class="dua-label">Du'a:</span> Yā Raḥmān irḥamnī
+            </div>
+            <div class="evidence-badge" id="dailyNameEvidence">Qur'an 1:3</div>
+          </div>
+        </div>
+
+        <!-- Arabic Word of the Day Card -->
+        <div class="card" id="wordOfDayCard">
+          <div class="card-header">
+            <span class="card-icon">📖</span>
+            <h2>Word of the Day</h2>
+          </div>
+          <div class="card-body">
+            <div class="arabic-large" id="dailyWordArabic">هدى</div>
+            <div class="transliteration" id="dailyWordTranslit">Hudā</div>
+            <div class="meaning" id="dailyWordMeaning">guidance</div>
+            <div class="root-box" id="dailyWordRoot">Root: هـ-د-ي (H-D-Y)</div>
+            <div class="tajweed-note" id="dailyWordTajweed">ـ</div>
+            <div class="example-box" id="dailyWordExample">
+              <em>ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Dhikr Card -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🌙</span>
+            <h2>Daily Dhikr</h2>
+          </div>
+          <div class="card-body">
+            <div class="dhikr-item">
+              <span class="dhikr-text">سُبْحَانَ اللَّهِ</span>
+              <span class="dhikr-translit">SubḥānAllāh</span>
+              <div class="counter-controls">
+                <span class="badge" id="subhanTarget">33</span>
+                <button class="counter-btn" id="subhanPlus">+1</button>
+                <span class="counter-value" id="subhanValue">33</span>
+                <button class="reset-btn" id="subhanReset">↺</button>
+              </div>
+            </div>
+            
+            <div class="dhikr-item">
+              <span class="dhikr-text">الْحَمْدُ لِلَّهِ</span>
+              <span class="dhikr-translit">Alḥamdulillāh</span>
+              <div class="counter-controls">
+                <span class="badge" id="hamdTarget">33</span>
+                <button class="counter-btn" id="hamdPlus">+1</button>
+                <span class="counter-value" id="hamdValue">33</span>
+                <button class="reset-btn" id="hamdReset">↺</button>
+              </div>
+            </div>
+            
+            <div class="dhikr-item">
+              <span class="dhikr-text">اللَّهُ أَكْبَرُ</span>
+              <span class="dhikr-translit">Allāhu Akbar</span>
+              <div class="counter-controls">
+                <span class="badge" id="akbarTarget">34</span>
+                <button class="counter-btn" id="akbarPlus">+1</button>
+                <span class="counter-value" id="akbarValue">34</span>
+                <button class="reset-btn" id="akbarReset">↺</button>
+              </div>
+            </div>
+            
+            <button class="btn-secondary" id="resetAllDhikr">⟲ Reset All Counters</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-value">50</span>
+          <span class="stat-label">Names of Allah</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">300+</span>
+          <span class="stat-label">Qur'anic Words</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">100+</span>
+          <span class="stat-label">Islamic Phrases</span>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>🤲 samkran · personal ilm tool · mā shā’ Allāh</p>
+    </footer>
+  </div>
+
+  <script src="js/namesData.js"></script>
+  <script src="js/arabicData.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
