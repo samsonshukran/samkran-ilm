@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samkran Ilm · 50 Names of Allah</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <h1><span class="arabic-logo">الأسماء الحسنى</span> · 50 Names of Allah</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="names.html" class="active">Names of Allah</a>
+        <a href="arabic.html">Arabic & Dhikr</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Grid View -->
+      <section id="namesGrid">
+        <div class="section-header">
+          <h2>🌟 The 50 Beautiful Names</h2>
+          <span class="badge large" id="namesCount">50 names</span>
+        </div>
+        
+        <div class="names-grid" id="namesGridContainer">
+          <!-- Dynamically filled by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Detail View (hidden initially) -->
+      <section id="nameDetail" class="hidden">
+        <button class="btn-back" id="backToGrid">← Back to all names</button>
+        
+        <div class="detail-card">
+          <div class="detail-header">
+            <div class="name-arabic-large" id="detailArabic">الرحمن</div>
+            <div class="name-translit-large" id="detailTranslit">Ar-Raḥmān</div>
+          </div>
+          
+          <div class="detail-content">
+            <div class="detail-row">
+              <div class="detail-label">Meaning</div>
+              <div class="detail-value" id="detailMeaning">The Most Gracious</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">Evidence</div>
+              <div class="detail-value" id="detailEvidence">Qur'an 1:3, 55:1</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">Reflection</div>
+              <div class="detail-value" id="detailReflection">Allah's mercy encompasses all of creation, believers and non-believers alike.</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">When to Use</div>
+              <div class="detail-value" id="detailWhen">When seeking mercy, when feeling hopeless, when asking for forgiveness</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">Du'a Example</div>
+              <div class="detail-value dua-example" id="detailDua">Yā Raḥmān irḥamnī wa-rḥam jamīʻ al-muslimīn</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">Tajwīd Note</div>
+              <div class="detail-value" id="detailTajwid">The letter ḥ (ح) is a deep throat sound, not like English 'h'</div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-label">Related Names</div>
+              <div class="detail-value" id="detailRelated">Ar-Raḥīm, Al-Ghafūr, Al-Wadūd</div>
+            </div>
+            
+            <div class="personal-note-section">
+              <label for="personalNote" class="detail-label">📝 Personal Reflection</label>
+              <textarea id="personalNote" class="personal-note" placeholder="Write your personal reflections about this name..." rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>walillāh al-asmāʼ al-ḥusnā fadʻūhu bihā</p>
+    </footer>
+  </div>
+
+  <script src="js/namesData.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
