@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juz 'Amma · SAMKRAN Ilm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1><span class="arabic-logo">جزء عم</span> · Juz 'Amma</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="names.html">Names of Allah</a>
+                <a href="arabic.html">Arabic & Dhikr</a>
+                <a href="juzAmma.html" class="active">Juz 'Amma</a>
+            </nav>
+        </header>
+
+        <main id="juz-content" class="juz-content">
+            <!-- Content loaded dynamically -->
+            <div class="loading">Loading Juz 'Amma...</div>
+        </main>
+
+        <footer class="footer">
+            <p>🤲 "...and recite the Qur'an with measured recitation." — Qur'an 73:4</p>
+        </footer>
+    </div>
+
+    <!-- Scripts in correct order -->
+    <script src="js/juzAmmaData.js"></script>
+    <script src="js/juzAmmaTranslations.js"></script>
+    <script src="js/audioManager.js"></script>
+    <script src="js/juzAmma.js"></script>
+    <script>
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Juz Amma page loaded');
+            console.log('juzAmmaData:', window.juzAmmaData ? '✅ Loaded' : '❌ Not loaded');
+            console.log('swahiliTranslations:', window.swahiliTranslations ? '✅ Loaded' : '❌ Not loaded');
+            console.log('transliterationData:', window.transliterationData ? '✅ Loaded' : '❌ Not loaded');
+            console.log('AudioManager:', window.AudioManager ? '✅ Loaded' : '❌ Not loaded');
+            
+            if (typeof initJuzAmma === 'function') {
+                initJuzAmma();
+            } else {
+                console.error('initJuzAmma function not found');
+                document.getElementById('juz-content').innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ Error Loading Juz Amma</h3>
+                        <p>Please check that all scripts are loaded correctly.</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

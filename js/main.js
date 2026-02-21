@@ -1,5 +1,5 @@
 // ===== MAIN.JS - Samkran Ilm Core Logic =====
-// FIXED: Properly handles all data from window
+// FIXED: Properly handles all data from window including Juz 'Amma
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         initNamesPage();
     } else if (currentPage === 'arabic.html') {
         initArabicPage();
+    } else if (currentPage === 'juzAmma.html') {
+        initJuzAmmaPage();
     }
     
     // Initialize common features
@@ -39,6 +41,14 @@ function getKhutbahWords() {
 
 function getDhikrSlides() {
     return window.dhikrSlides || null;
+}
+
+function getJuzAmmaData() {
+    return window.juzAmmaData || null;
+}
+
+function getSwahiliTranslations() {
+    return window.swahiliTranslations || null;
 }
 
 // ===== HOME PAGE FUNCTIONS =====
@@ -532,6 +542,50 @@ function initSearch() {
     });
 }
 
+// ===== JUZ 'AMMA PAGE FUNCTIONS =====
+function initJuzAmmaPage() {
+    console.log('Initializing Juz Amma page...');
+    
+    const juzAmmaData = getJuzAmmaData();
+    const swahiliTranslations = getSwahiliTranslations();
+    
+    if (juzAmmaData) {
+        console.log(`📖 Juz Amma data loaded: ${juzAmmaData.length} surahs`);
+    } else {
+        console.error('juzAmmaData not available');
+    }
+    
+    if (swahiliTranslations) {
+        console.log('✅ Swahili translations loaded');
+    } else {
+        console.warn('swahiliTranslations not available');
+    }
+    
+    // Initialize Juz Amma if the function exists
+    if (typeof window.initJuzAmma === 'function') {
+        window.initJuzAmma();
+    } else {
+        console.error('Juz Amma initialization function not found. Make sure juzAmma.js is loaded.');
+        
+        // Fallback: try to load Juz Amma directly
+        const content = document.getElementById('juz-content');
+        if (content) {
+            content.innerHTML = `
+                <div class="error-message">
+                    <h3>⚠️ Juz Amma module not fully loaded</h3>
+                    <p>Please check that the following scripts are included:</p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>js/juzAmmaData.js</li>
+                        <li>js/juzAmmaTranslations.js</li>
+                        <li>js/audioManager.js</li>
+                        <li>js/juzAmma.js</li>
+                    </ul>
+                </div>
+            `;
+        }
+    }
+}
+
 // ===== UTILITY FUNCTIONS =====
 function setElementText(id, text) {
     const el = document.getElementById(id);
@@ -551,6 +605,8 @@ function checkDataLoaded() {
     console.log('phrasesData:', getPhrasesData() ? `✅ Loaded (${getPhrasesData().length})` : '❌ NOT LOADED');
     console.log('khutbahWords:', getKhutbahWords() ? `✅ Loaded (${getKhutbahWords().length})` : '❌ NOT LOADED');
     console.log('dhikrSlides:', getDhikrSlides() ? `✅ Loaded (${getDhikrSlides().length})` : '❌ NOT LOADED');
+    console.log('juzAmmaData:', getJuzAmmaData() ? `✅ Loaded (${getJuzAmmaData().length})` : '❌ NOT LOADED');
+    console.log('swahiliTranslations:', getSwahiliTranslations() ? '✅ Loaded' : '❌ NOT LOADED');
     console.log('=======================');
 }
 
@@ -563,4 +619,5 @@ window.renderNamesGrid = renderNamesGrid;
 window.renderArabicGrid = renderWordsGrid;
 window.initArabicPage = initArabicPage;
 window.initNamesPage = initNamesPage;
+window.initJuzAmmaPage = initJuzAmmaPage;
 window.checkDataLoaded = checkDataLoaded;
