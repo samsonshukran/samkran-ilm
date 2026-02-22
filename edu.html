@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Islamic Arabic · EDU · SAMKRAN Ilm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="arabic-logo">تعلم العربية</span> · Learn Islamic Arabic</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="names.html">Names of Allah</a>
+                <a href="arabic.html">Arabic & Dhikr</a>
+                <a href="juzAmma.html">Juz 'Amma</a>
+                <a href="edu.html" class="active">EDU · Learn</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="edu-page">
+            <!-- Header -->
+            <div class="edu-header">
+                <h2>📚 Learn Islamic Arabic</h2>
+                <p class="edu-subtitle">Master the language of the Qur'an · تعلم لغة القرآن</p>
+            </div>
+
+            <!-- Sub-tabs -->
+            <div class="edu-subtabs">
+                <button class="edu-subtab active" onclick="switchEduSection('letters')">🔤 Letters</button>
+                <button class="edu-subtab" onclick="switchEduSection('phrases')">💬 Daily Phrases</button>
+                <button class="edu-subtab" onclick="switchEduSection('vocabulary')">📚 Vocabulary</button>
+                <button class="edu-subtab" onclick="switchEduSection('quiz')">❓ Quiz</button>
+            </div>
+
+            <!-- Letters Section -->
+            <div id="letters-section" class="edu-section active">
+                <div class="section-header">
+                    <h3>Arabic Letters · الحروف العربية</h3>
+                    <p>Click on any letter to see details</p>
+                </div>
+                <div class="letters-grid" id="lettersContainer">
+                    <div class="loading-message">Loading letters...</div>
+                </div>
+            </div>
+
+            <!-- Phrases Section -->
+            <div id="phrases-section" class="edu-section">
+                <div class="section-header">
+                    <h3>Daily Islamic Phrases · العبارات الإسلامية</h3>
+                    <input type="text" id="phraseSearch" class="search-box" placeholder="Search phrases...">
+                </div>
+                <div class="phrases-grid" id="phrasesContainer">
+                    <div class="loading-message">Loading phrases...</div>
+                </div>
+            </div>
+
+            <!-- Vocabulary Section -->
+            <div id="vocabulary-section" class="edu-section">
+                <div class="section-header">
+                    <h3>Qur'anic Vocabulary · المفردات القرآنية</h3>
+                    <div class="category-filters">
+                        <button class="category-btn active" onclick="filterVocabulary('all')">All</button>
+                        <button class="category-btn" onclick="filterVocabulary('animals')">🐪 Animals</button>
+                        <button class="category-btn" onclick="filterVocabulary('nature')">☀️ Nature</button>
+                        <button class="category-btn" onclick="filterVocabulary('household')">🏠 Household</button>
+                        <button class="category-btn" onclick="filterVocabulary('family')">👪 Family</button>
+                        <button class="category-btn" onclick="filterVocabulary('quranic')">📖 Quranic</button>
+                    </div>
+                    <input type="text" id="vocabSearch" class="search-box" placeholder="Search vocabulary...">
+                </div>
+                <div class="vocabulary-grid" id="vocabularyContainer">
+                    <div class="loading-message">Loading vocabulary...</div>
+                </div>
+            </div>
+
+            <!-- Quiz Section -->
+            <div id="quiz-section" class="edu-section">
+                <div class="section-header">
+                    <h3>Test Your Knowledge · اختبار</h3>
+                    <div class="quiz-controls">
+                        <button class="quiz-btn" onclick="loadRandomQuiz()">🎲 Random Question</button>
+                        <select id="quizCategory" class="quiz-select" onchange="loadQuizByCategory(this.value)">
+                            <option value="all">All Categories</option>
+                            <option value="letters">Letters</option>
+                            <option value="phrases">Phrases</option>
+                            <option value="vocabulary">Vocabulary</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="quiz-container" id="quizContainer">
+                    <div class="quiz-card">
+                        <div class="quiz-question" id="quizQuestion">Click a button to start</div>
+                        <div class="quiz-options" id="quizOptions"></div>
+                        <div class="quiz-input" id="quizInput" style="display: none;">
+                            <input type="text" id="textAnswer" placeholder="Type your answer">
+                            <button onclick="checkTextAnswer()">Submit</button>
+                        </div>
+                        <div class="quiz-result" id="quizResult"></div>
+                        <div class="quiz-feedback" id="quizFeedback"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🤲 "And We have certainly made the Qur'an easy for remembrance, so is there any who will remember?" — Qur'an 54:17</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/edu-data.json.js"></script>
+    <script src="js/edu.js"></script>
+</body>
+</html>
