@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samkran Ilm · Duas from Qur'an & Hadith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="arabic-logo">سمكران</span> Samkran Ilm · Duas</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="names.html">99 Names</a>
+                <a href="arabic.html">Arabic Words</a>
+                <a href="juzAmma.html">Juz 'Amma</a>
+                <a href="dua.html" class="active">Duas</a>
+            </nav>
+        </header>
+
+        <!-- Main Dua Content -->
+        <div class="dua-container">
+            <!-- Header Section -->
+            <div class="dua-header">
+                <div class="header-icon">🤲</div>
+                <h2>Authentic Duas · Qur'an & Hadith</h2>
+                <p class="header-subtitle">Supplications of the Prophets and daily duas with Swahili translations</p>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalDuas">0</span>
+                    <span class="stat-label">Total Duas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="quranCount">0</span>
+                    <span class="stat-label">Qur'anic</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="hadithCount">0</span>
+                    <span class="stat-label">Hadith</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="prophetCount">0</span>
+                    <span class="stat-label">Prophets</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="favoriteCount">0</span>
+                    <span class="stat-label">Favorites</span>
+                </div>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-box-container">
+                    <input type="text" class="search-box" id="duaSearch" placeholder="🔍 Search by Arabic, Swahili, or Prophet...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="quran">Qur'an</button>
+                    <button class="filter-btn" data-filter="hadith">Hadith</button>
+                    <button class="filter-btn" data-filter="favorites">❤️ Favorites</button>
+                </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="category-pills" id="categoryPills">
+                <button class="category-pill active" data-category="all">All</button>
+                <button class="category-pill" data-category="Forgiveness">🤲 Forgiveness</button>
+                <button class="category-pill" data-category="Protection">🛡️ Protection</button>
+                <button class="category-pill" data-category="Guidance">🌟 Guidance</button>
+                <button class="category-pill" data-category="Rizq">💰 Rizq</button>
+                <button class="category-pill" data-category="Patience">🌿 Patience</button>
+                <button class="category-pill" data-category="Mercy">💧 Mercy</button>
+                <button class="category-pill" data-category="Repentance">🤲 Repentance</button>
+            </div>
+
+            <!-- Prophet Quick Filter -->
+            <div class="prophet-strip">
+                <span class="prophet-label">Prophets:</span>
+                <div class="prophet-pills" id="prophetPills">
+                    <button class="prophet-pill active" data-prophet="all">All</button>
+                    <button class="prophet-pill" data-prophet="Adam">Adam (AS)</button>
+                    <button class="prophet-pill" data-prophet="Nuh">Nuh (AS)</button>
+                    <button class="prophet-pill" data-prophet="Ibrahim">Ibrahim (AS)</button>
+                    <button class="prophet-pill" data-prophet="Musa">Musa (AS)</button>
+                    <button class="prophet-pill" data-prophet="Dawud">Dawud (AS)</button>
+                    <button class="prophet-pill" data-prophet="Sulaiman">Sulaiman (AS)</button>
+                    <button class="prophet-pill" data-prophet="Yunus">Yunus (AS)</button>
+                    <button class="prophet-pill" data-prophet="Ayyub">Ayyub (AS)</button>
+                    <button class="prophet-pill" data-prophet="Yusuf">Yusuf (AS)</button>
+                    <button class="prophet-pill" data-prophet="Yahya">Yahya (AS)</button>
+                    <button class="prophet-pill" data-prophet="Isa">Isa (AS)</button>
+                    <button class="prophet-pill" data-prophet="Muhammad">Muhammad (ﷺ)</button>
+                </div>
+            </div>
+
+            <!-- Duas Grid -->
+            <div class="duas-grid" id="duasGrid">
+                <!-- Duas will be dynamically loaded here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results hidden" id="noResults">
+                <div class="no-results-icon">🤲</div>
+                <h3>No duas found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner hidden" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Loading duas...</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Samkran Ilm · Authentic Duas from Qur'an & Sahih Hadith · mā shā’ Allāh</p>
+            <p style="margin-top: 0.5rem;">With Swahili translations for East African Muslims</p>
+        </footer>
+    </div>
+
+    <script src="js/quran-duas.js"></script>
+    <script src="js/hadith-duas.js"></script>
+    <script src="js/dua.js"></script>
+</body>
+</html>

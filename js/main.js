@@ -1,5 +1,5 @@
 // ===== MAIN.JS - Samkran Ilm Core Logic =====
-// FIXED: Properly handles all data from window including Juz 'Amma
+// UPDATED: Added Dua tab support
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         initArabicPage();
     } else if (currentPage === 'juzAmma.html') {
         initJuzAmmaPage();
+    } else if (currentPage === 'dua.html') {
+        initDuaPage();
     }
     
     // Initialize common features
@@ -49,6 +51,15 @@ function getJuzAmmaData() {
 
 function getSwahiliTranslations() {
     return window.swahiliTranslations || null;
+}
+
+// ===== NEW: DUA DATA ACCESS FUNCTIONS =====
+function getQuranDuas() {
+    return window.quranDuas || null;
+}
+
+function getHadithDuas() {
+    return window.hadithDuas || null;
 }
 
 // ===== HOME PAGE FUNCTIONS =====
@@ -495,6 +506,49 @@ function initDhikrCounters() {
     });
 }
 
+// ===== NEW: DUA PAGE FUNCTIONS =====
+function initDuaPage() {
+    console.log('Initializing Dua page...');
+    
+    const quranDuas = getQuranDuas();
+    const hadithDuas = getHadithDuas();
+    
+    if (quranDuas) {
+        console.log(`📖 Quranic duas loaded: ${quranDuas.length}`);
+    } else {
+        console.error('quranDuas not available');
+    }
+    
+    if (hadithDuas) {
+        console.log(`📖 Hadith duas loaded: ${hadithDuas.length}`);
+    } else {
+        console.error('hadithDuas not available');
+    }
+    
+    // Initialize Dua system if the function exists
+    if (typeof window.initDuaSystem === 'function') {
+        window.initDuaSystem();
+    } else {
+        console.error('Dua initialization function not found. Make sure dua.js is loaded.');
+        
+        // Fallback: try to load Dua page directly
+        const grid = document.getElementById('duasGrid');
+        if (grid) {
+            grid.innerHTML = `
+                <div class="error-message" style="grid-column: 1/-1;">
+                    <h3>⚠️ Dua module not fully loaded</h3>
+                    <p>Please check that the following scripts are included:</p>
+                    <ul style="text-align: left; margin-top: 1rem; color: #94a3b8;">
+                        <li>quran-duas.js</li>
+                        <li>hadith-duas.js</li>
+                        <li>dua.js</li>
+                    </ul>
+                </div>
+            `;
+        }
+    }
+}
+
 // ===== TABS =====
 function initTabs() {
     const tabs = document.querySelectorAll('.tab-btn');
@@ -597,7 +651,7 @@ function setElementHtml(id, html) {
     if (el) el.innerHTML = html;
 }
 
-// ===== DEBUG FUNCTION =====
+// ===== DEBUG FUNCTION (UPDATED) =====
 function checkDataLoaded() {
     console.log('=== DATA LOAD CHECK ===');
     console.log('namesData:', getNamesData() ? `✅ Loaded (${getNamesData().length})` : '❌ NOT LOADED');
@@ -607,6 +661,8 @@ function checkDataLoaded() {
     console.log('dhikrSlides:', getDhikrSlides() ? `✅ Loaded (${getDhikrSlides().length})` : '❌ NOT LOADED');
     console.log('juzAmmaData:', getJuzAmmaData() ? `✅ Loaded (${getJuzAmmaData().length})` : '❌ NOT LOADED');
     console.log('swahiliTranslations:', getSwahiliTranslations() ? '✅ Loaded' : '❌ NOT LOADED');
+    console.log('quranDuas:', getQuranDuas() ? `✅ Loaded (${getQuranDuas().length})` : '❌ NOT LOADED');
+    console.log('hadithDuas:', getHadithDuas() ? `✅ Loaded (${getHadithDuas().length})` : '❌ NOT LOADED');
     console.log('=======================');
 }
 
@@ -620,4 +676,5 @@ window.renderArabicGrid = renderWordsGrid;
 window.initArabicPage = initArabicPage;
 window.initNamesPage = initNamesPage;
 window.initJuzAmmaPage = initJuzAmmaPage;
+window.initDuaPage = initDuaPage; // NEW: Export Dua page function
 window.checkDataLoaded = checkDataLoaded;
