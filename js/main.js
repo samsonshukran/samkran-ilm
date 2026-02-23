@@ -678,3 +678,229 @@ window.initNamesPage = initNamesPage;
 window.initJuzAmmaPage = initJuzAmmaPage;
 window.initDuaPage = initDuaPage; // NEW: Export Dua page function
 window.checkDataLoaded = checkDataLoaded;
+
+
+
+
+
+
+
+// ===== PWA INSTALLATION =====
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+// Check if app is already installed
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  console.log('App is running in standalone mode');
+  if (installBtn) installBtn.style.display = 'none';
+}
+
+// Listen for install prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Show install button
+  if (installBtn) {
+    installBtn.style.display = 'flex';
+    console.log('Install prompt available');
+  }
+});
+
+// Handle install button click
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    
+    // Show install prompt
+    deferredPrompt.prompt();
+    
+    // Wait for user choice
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User ${outcome} installation`);
+    
+    // Hide button after choice
+    installBtn.style.display = 'none';
+    deferredPrompt = null;
+  });
+}
+
+// Detect successful installation
+window.addEventListener('appinstalled', (evt) => {
+  console.log('App was installed successfully');
+  if (installBtn) installBtn.style.display = 'none';
+  
+  // Track installation
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'install', {
+      'event_category': 'PWA',
+      'event_label': 'App Installed'
+    });
+  }
+});
+
+// ===== OFFLINE DETECTION =====
+function updateOnlineStatus() {
+  const offlineIndicator = document.getElementById('offlineIndicator');
+  if (!offlineIndicator) {
+    // Create offline indicator if it doesn't exist
+    const indicator = document.createElement('div');
+    indicator.id = 'offlineIndicator';
+    indicator.className = 'offline-indicator';
+    indicator.innerHTML = '📴 You are offline';
+    document.body.appendChild(indicator);
+  }
+  
+  const indicator = document.getElementById('offlineIndicator');
+  if (navigator.onLine) {
+    indicator.classList.remove('show');
+  } else {
+    indicator.classList.add('show');
+  }
+}
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+updateOnlineStatus();
+
+// ===== SERVICE WORKER REGISTRATION =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then((registration) => {
+        console.log('✅ Service Worker registered:', registration.scope);
+        
+        // Check for updates
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          console.log('New service worker found:', newWorker);
+          
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New version available
+              showUpdateNotification(registration);
+            }
+          });
+        });
+      })
+      .catch((error) => {
+        console.error('❌ Service Worker registration failed:', error);
+      });
+    
+    // Check for service worker updates periodically
+    setInterval(() => {
+      navigator.serviceWorker.getRegistration().then((registration) => {
+        if (registration) {
+          registration.update();
+        }
+      });
+    }, 60 * 60 * 1000); // Check every hour
+  });
+  
+  // Handle service worker updates
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    console.log('New service worker activated');
+    // Show reload notification
+    if (confirm('A new version is available. Reload to update?')) {
+      window.location.reload();
+    }
+  });
+} else {
+  console.warn('Service workers are not supported');
+}
+
+// ===== UPDATE NOTIFICATION =====
+function showUpdateNotification(registration) {
+  // Create update notification if it doesn't exist
+  let notification = document.getElementById('updateNotification');
+  
+  if (!notification) {
+    notification = document.createElement('div');
+    notification.id = 'updateNotification';
+    notification.className = 'update-notification';
+    notification.innerHTML = `
+      <div class="update-content">
+        <div class="update-icon">🔄</div>
+        <div class="update-text">
+          <h4>Update Available</h4>
+          <p>A new version of Samkran Ilm is ready</p>
+        </div>
+        <button class="update-btn" onclick="applyUpdate()">Update</button>
+      </div>
+    `;
+    document.body.appendChild(notification);
+  }
+  
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 1000);
+  
+  // Store registration for update
+  window.pendingRegistration = registration;
+}
+
+// Apply update function
+window.applyUpdate = function() {
+  const notification = document.getElementById('updateNotification');
+  if (notification) {
+    notification.classList.remove('show');
+  }
+  
+  if (window.pendingRegistration && window.pendingRegistration.waiting) {
+    window.pendingRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }
+};
+
+// Listen for messages from service worker
+navigator.serviceWorker.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+    showUpdateNotification();
+  }
+});
+
+// ===== BACKGROUND SYNC REGISTRATION =====
+if ('serviceWorker' in navigator && 'SyncManager' in window) {
+  navigator.serviceWorker.ready.then((registration) => {
+    // Register sync for progress data
+    registration.sync.register('sync-progress').catch((error) => {
+      console.log('Background sync registration failed:', error);
+    });
+  });
+}
+
+// ===== CACHE SIZE MANAGEMENT =====
+async function getCacheSize() {
+  if ('storage' in navigator && 'estimate' in navigator.storage) {
+    const estimate = await navigator.storage.estimate();
+    console.log(`Cache usage: ${(estimate.usage / 1024 / 1024).toFixed(2)} MB`);
+    console.log(`Cache quota: ${(estimate.quota / 1024 / 1024).toFixed(2)} MB`);
+    
+    // Warn if cache is getting full (over 80%)
+    if (estimate.usage > estimate.quota * 0.8) {
+      console.warn('Cache is getting full, consider clearing old data');
+    }
+  }
+}
+
+// Check cache size periodically
+setInterval(getCacheSize, 24 * 60 * 60 * 1000); // Once per day
+
+// ===== CLEAR CACHE FUNCTION =====
+window.clearAppCache = async function() {
+  if (confirm('Clear all cached data? You will need to download audio again.')) {
+    const cacheNames = await caches.keys();
+    await Promise.all(
+      cacheNames.map((name) => {
+        if (name.startsWith('samkran-ilm-')) {
+          return caches.delete(name);
+        }
+      })
+    );
+    alert('Cache cleared successfully');
+    window.location.reload();
+  }
+};
+
+// Export functions
+window.applyUpdate = applyUpdate;
+window.clearAppCache = clearAppCache;

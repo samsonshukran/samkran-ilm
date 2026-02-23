@@ -2544,3 +2544,134 @@ body {
         width: 100%;
     }
 }
+
+
+
+/* ===== PWA INSTALL BUTTON STYLES ===== */
+.install-btn {
+  background: linear-gradient(135deg, #facc15 0%, #fbbf24 100%);
+  color: #0f172a;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+  transition: all 0.3s ease;
+  margin: 1rem auto;
+}
+
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
+}
+
+.install-btn .install-icon {
+  font-size: 1.2rem;
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ef4444;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.offline-indicator.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* App update notification */
+.update-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #1a2436;
+  border: 1px solid #facc15;
+  border-radius: 16px;
+  padding: 1rem;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.update-notification.show {
+  display: block;
+  animation: fadeInUp 0.3s ease;
+}
+
+.update-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.update-icon {
+  font-size: 2rem;
+}
+
+.update-text {
+  flex: 1;
+}
+
+.update-text h4 {
+  color: #facc15;
+  margin-bottom: 0.25rem;
+}
+
+.update-text p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.update-btn {
+  background: #facc15;
+  border: none;
+  color: #0f172a;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background: #ffd966;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

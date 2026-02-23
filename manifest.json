@@ -1,0 +1,103 @@
+{
+  "name": "Samkran Ilm - Islamic Learning App",
+  "short_name": "SamkranIlm",
+  "description": "Learn Quran, Arabic, Dhikr, and 99 Names of Allah",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#facc15",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/home.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Home Screen - Daily Dhikr and Learning"
+    },
+    {
+      "src": "screenshots/juzamma.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Juz 'Amma - Quran Audio Player"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Juz 'Amma",
+      "short_name": "Juz",
+      "description": "Listen and memorize Quran",
+      "url": "juzAmma.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "99 Names",
+      "short_name": "Names",
+      "description": "Learn Allah's names",
+      "url": "names.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Arabic Learning",
+      "short_name": "EDU",
+      "description": "Learn Arabic letters and phrases",
+      "url": "edu.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["education", "religion", "books"],
+  "lang": "en",
+  "dir": "ltr"
+}
