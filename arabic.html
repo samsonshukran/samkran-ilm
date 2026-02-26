@@ -1,167 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samkran Ilm · Arabic & Dhikr</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Arabic · SAMKRAN Ilm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">
-        <h1><span class="arabic-logo">اللغة العربية</span> · Arabic & Dhikr</h1>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="names.html">Names of Allah</a>
-        <a href="arabic.html" class="active">Arabic & Dhikr</a>
-        <a href="juzAmma.html">juz'Amma</a>
-        <a href="dua/dua.html">Dua Collection</a>
-        <a href="edu.html">Learn Arabic</a>
-      </nav>
-    </header>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="arabic-logo">تعلم العربية</span> · Learn Arabic</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="names.html">99 Names</a>
+                <a href="arabic.html" class="active">Learn Arabic</a>
+                <a href="juzAmma.html">Juz 'Amma</a>
+                <a href="dua.html">Duas & Dhikr</a>
+            </nav>
+        </header>
 
-    <main>
-      <!-- Tabs for different sections -->
-      <div class="tabs-container">
-        <button class="tab-btn active" data-tab="words">📚 Qur'anic Words</button>
-        <button class="tab-btn" data-tab="phrases">🕌 Islamic Phrases</button>
-        <button class="tab-btn" data-tab="roots">🌳 Root System</button>
-        <button class="tab-btn" data-tab="dhikr">🔄 Dhikr Slideshow</button>
-      </div>
+        <!-- Main Content -->
+        <main class="arabic-page">
+            <!-- Header -->
+            <div class="arabic-header">
+                <h2>📚 Learn Arabic · تعلم العربية</h2>
+                <p class="arabic-subtitle">Master the language of the Qur'an step by step</p>
+            </div>
 
-      <!-- Words Tab -->
-      <div id="words-tab" class="tab-content active">
-        <div class="section-header">
-          <h2>📖 <span id="wordCount">300+</span> Most Common Qur'anic Words</h2>
-          <input type="text" id="wordSearch" class="search-box" placeholder="Search words...">
-        </div>
-        
-        <div class="words-grid" id="wordsGridContainer">
-          <!-- Dynamically filled from arabicData.js -->
-          <div class="loading-message">Loading words...</div>
-        </div>
-      </div>
+            <!-- Progress Bar -->
+            <div class="learning-progress">
+                <div class="progress-item">
+                    <span class="progress-label">Letters</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="lettersProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-count" id="lettersCount">0/28</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Words</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="wordsProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-count" id="wordsCount">0/50</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Phrases</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="phrasesProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-count" id="phrasesCount">0/30</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Conversations</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="conversationsProgress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-count" id="conversationsCount">0/25</span>
+                </div>
+            </div>
 
-      <!-- Phrases Tab -->
-      <div id="phrases-tab" class="tab-content hidden">
-        <div class="section-header">
-          <h2>🕌 <span id="phraseCount">200+</span> Essential Islamic Phrases</h2>
-          <input type="text" id="phraseSearch" class="search-box" placeholder="Search phrases...">
-        </div>
-        
-        <div class="phrases-list" id="phrasesListContainer">
-          <!-- Dynamically filled from arabicData.js -->
-          <div class="loading-message">Loading phrases...</div>
-        </div>
-      </div>
+            <!-- Main Learning Tabs -->
+            <div class="learning-tabs">
+                <button class="tab-btn active" onclick="switchLearningTab('letters')">🔤 Letters</button>
+                <button class="tab-btn" onclick="switchLearningTab('words')">📖 Words</button>
+                <button class="tab-btn" onclick="switchLearningTab('phrases')">💬 Phrases</button>
+                <button class="tab-btn" onclick="switchLearningTab('sentences')">📝 Sentences</button>
+                <button class="tab-btn" onclick="switchLearningTab('conversations')">🗣️ Conversations</button>
+                <button class="tab-btn" onclick="switchLearningTab('quiz')">❓ Practice Quiz</button>
+            </div>
 
-      <!-- Roots Tab -->
-      <div id="roots-tab" class="tab-content hidden">
-        <h2>🌳 Understanding Arabic Roots</h2>
-        
-        <div class="roots-grid" id="rootsGrid">
-          <!-- Static root examples since we removed roots from data -->
-          <div class="root-card">
-            <div class="root-letters">ك-ت-ب</div>
-            <div class="root-meaning">Writing</div>
-            <ul class="root-words">
-              <li>كتب <span>he wrote</span></li>
-              <li>كتاب <span>book</span></li>
-              <li>كاتب <span>writer</span></li>
-              <li>مكتبة <span>library</span></li>
-            </ul>
-          </div>
-          <div class="root-card">
-            <div class="root-letters">ق-و-ل</div>
-            <div class="root-meaning">Saying</div>
-            <ul class="root-words">
-              <li>قال <span>he said</span></li>
-              <li>قول <span>speech</span></li>
-              <li>قائل <span>speaker</span></li>
-              <li>مقالة <span>article</span></li>
-            </ul>
-          </div>
-          <div class="root-card">
-            <div class="root-letters">ع-ل-م</div>
-            <div class="root-meaning">Knowledge</div>
-            <ul class="root-words">
-              <li>علم <span>knowledge</span></li>
-              <li>عالم <span>scholar</span></li>
-              <li>تعلم <span>learning</span></li>
-              <li>معلوم <span>known</span></li>
-            </ul>
-          </div>
-          <div class="root-card">
-            <div class="root-letters">ر-ح-م</div>
-            <div class="root-meaning">Mercy</div>
-            <ul class="root-words">
-              <li>رحمة <span>mercy</span></li>
-              <li>رحمن <span>Most Gracious</span></li>
-              <li>رحيم <span>Most Merciful</span></li>
-              <li>مرحوم <span>blessed with mercy</span></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="info-box">
-          <h3>How Roots Work</h3>
-          <p>Most Arabic words derive from a 3-letter root. This root gives the core meaning, and different patterns create related words.</p>
-        </div>
-      </div>
+            <!-- LETTERS TAB -->
+            <div id="letters-tab" class="learning-tab-content active">
+                <div class="section-header">
+                    <h3>Arabic Letters · الحروف العربية</h3>
+                    <p class="section-subtitle">Click on any letter to hear pronunciation and see examples</p>
+                </div>
+                
+                <div class="letters-master-grid" id="lettersGrid">
+                    <!-- Dynamically filled -->
+                </div>
 
-      <!-- Dhikr Slideshow Tab -->
-      <div id="dhikr-tab" class="tab-content hidden">
-        <div class="slideshow-container">
-          <div class="slideshow-arabic" id="slideshowArabic">سُبْحَانَ اللَّهِ</div>
-          <div class="slideshow-translit" id="slideshowTranslit">SubḥānAllāh</div>
-          <div class="slideshow-meaning" id="slideshowMeaning">Glory be to Allah</div>
-          <div class="slideshow-count" id="slideshowCount">Recommended: 33 times</div>
-          
-          <div class="slideshow-nav">
-            <button class="nav-btn" id="slideshowPrev">← Previous</button>
-            <button class="nav-btn" id="slideshowNext">Next →</button>
-          </div>
-          
-          <div class="timer-note">Auto-updates every 5 minutes</div>
-        </div>
-        
-        <!-- Dedicated Tasbih Counter -->
-        <div class="counter-card">
-          <h3>📿 Tasbih for Current Dhikr</h3>
-          <div class="current-dhikr" id="currentDhikrName">SubḥānAllāh</div>
-          <div class="counter-large">
-            <button class="counter-large-btn" id="slideshowCounterPlus">+</button>
-            <span class="counter-large-value" id="slideshowCounterValue">0</span>
-            <button class="counter-large-btn" id="slideshowCounterReset">↺</button>
-          </div>
-          <div class="counter-presets">
-            <button class="preset-btn" id="setTarget33">33</button>
-            <button class="preset-btn" id="setTarget100">100</button>
-          </div>
-        </div>
-      </div>
+                <div class="letter-practice">
+                    <h4>Practice Writing</h4>
+                    <div class="writing-practice" id="writingPractice">
+                        <div class="writing-letter" id="currentWritingLetter">ا</div>
+                        <input type="text" class="writing-input" id="writingInput" placeholder="Type the letter" maxlength="1">
+                        <button class="writing-check" onclick="checkWriting()">Check ✓</button>
+                        <button class="writing-next" onclick="nextWritingLetter()">Next →</button>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Khutbah Words Section -->
-      <section class="khutbah-section">
-        <h2>🕌 Khutbah Understanding Kit</h2>
-        <div class="khutbah-grid" id="khutbahGrid">
-          <!-- Filled with khutbah-specific vocabulary -->
-          <div class="loading-message">Loading khutbah words...</div>
-        </div>
-      </section>
-    </main>
+            <!-- WORDS TAB -->
+            <div id="words-tab" class="learning-tab-content">
+                <div class="section-header">
+                    <h3>Basic Words · المفردات الأساسية</h3>
+                    <div class="filter-bar">
+                        <input type="text" id="wordSearch" class="search-box" placeholder="🔍 Search words...">
+                        <select id="wordCategory" class="category-select" onchange="filterWords()">
+                            <option value="all">All Categories</option>
+                            <option value="animals">🐪 Animals</option>
+                            <option value="nature">☀️ Nature</option>
+                            <option value="family">👪 Family</option>
+                            <option value="household">🏠 Household</option>
+                            <option value="colors">🎨 Colors</option>
+                            <option value="quranic">📖 Quranic</option>
+                        </select>
+                    </div>
+                </div>
 
-    <footer class="footer">
-      <p>🤲 understanding the Qur'an begins with its words</p>
-    </footer>
-  </div>
+                <div class="words-grid" id="wordsGrid">
+                    <!-- Dynamically filled -->
+                </div>
 
-  <script src="js/arabicData.js"></script>
-  <script src="js/main.js"></script>
+                <div class="word-flashcard" id="wordFlashcard" style="display: none;">
+                    <button class="close-flashcard" onclick="closeFlashcard()">✕</button>
+                    <div class="flashcard-content">
+                        <div class="flashcard-arabic" id="flashcardArabic"></div>
+                        <div class="flashcard-translit" id="flashcardTranslit"></div>
+                        <div class="flashcard-meaning" id="flashcardMeaning"></div>
+                        <div class="flashcard-example" id="flashcardExample"></div>
+                        <div class="flashcard-navigation">
+                            <button onclick="previousWord()">← Previous</button>
+                            <button onclick="nextWord()">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHRASES TAB -->
+            <div id="phrases-tab" class="learning-tab-content">
+                <div class="section-header">
+                    <h3>Common Phrases · العبارات الشائعة</h3>
+                    <input type="text" id="phraseSearch" class="search-box" placeholder="🔍 Search phrases...">
+                </div>
+
+                <div class="phrases-list" id="phrasesList">
+                    <!-- Dynamically filled -->
+                </div>
+            </div>
+
+            <!-- SENTENCES TAB -->
+            <div id="sentences-tab" class="learning-tab-content">
+                <div class="section-header">
+                    <h3>Simple Sentences · جمل بسيطة</h3>
+                    <div class="sentence-controls">
+                        <select id="sentenceType" class="category-select" onchange="filterSentences()">
+                            <option value="all">All Sentences</option>
+                            <option value="greeting">Greetings</option>
+                            <option value="question">Questions</option>
+                            <option value="statement">Statements</option>
+                            <option value="quranic">Quranic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sentences-grid" id="sentencesGrid">
+                    <!-- Dynamically filled -->
+                </div>
+            </div>
+
+            <!-- CONVERSATIONS TAB -->
+            <div id="conversations-tab" class="learning-tab-content">
+                <div class="section-header">
+                    <h3>Simple Conversations · محادثات بسيطة</h3>
+                    <p class="section-subtitle">Practice real dialogues with alternating questions and answers</p>
+                </div>
+
+                <div class="conversation-container" id="conversationContainer">
+                    <div class="conversation-header">
+                        <select id="conversationTopic" class="category-select" onchange="loadConversation(this.value)">
+                            <option value="greeting">👋 Greetings</option>
+                            <option value="introduction">🤝 Introductions</option>
+                            <option value="family">👪 Family</option>
+                            <option value="food">🍽️ Food & Drink</option>
+                            <option value="prayer">🕌 Prayer</option>
+                            <option value="quran">📖 Quranic Conversations</option>
+                            <option value="daily">🌅 Daily Life</option>
+                            <option value="market">🏪 At the Market</option>
+                        </select>
+                        <button class="shuffle-btn" onclick="shuffleConversation()">🔄 Shuffle</button>
+                    </div>
+
+                    <div class="conversation-dialogue" id="conversationDialogue">
+                        <!-- Dynamically filled -->
+                    </div>
+
+                    <div class="conversation-practice">
+                        <h4>Practice Mode</h4>
+                        <div class="practice-role" id="practiceRole">You are: <span id="currentRole">Person A</span></div>
+                        <div class="practice-line" id="practiceLine">Click a line to practice</div>
+                        <div class="practice-input-group">
+                            <input type="text" id="practiceInput" placeholder="Type your response...">
+                            <button onclick="checkPractice()">Check</button>
+                        </div>
+                        <div class="practice-feedback" id="practiceFeedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ TAB -->
+            <div id="quiz-tab" class="learning-tab-content">
+                <div class="section-header">
+                    <h3>Practice Quiz · اختبار الممارسة</h3>
+                    <p class="section-subtitle">Test your knowledge with 100+ random questions</p>
+                </div>
+
+                <div class="quiz-master-container">
+                    <div class="quiz-controls-panel">
+                        <select id="quizTopic" class="category-select" onchange="loadQuizByTopic(this.value)">
+                            <option value="all">📚 All Topics</option>
+                            <option value="letters">🔤 Letters</option>
+                            <option value="words">📖 Words</option>
+                            <option value="phrases">💬 Phrases</option>
+                            <option value="sentences">📝 Sentences</option>
+                            <option value="conversations">🗣️ Conversations</option>
+                        </select>
+                        <button class="quiz-new-btn" onclick="loadRandomQuizQuestion()">🎲 New Random Question</button>
+                        <span class="quiz-counter" id="quizCounter">Question 1 of 150</span>
+                    </div>
+
+                    <div class="quiz-card-large" id="quizCard">
+                        <div class="quiz-question-large" id="quizQuestion">Click "New Random Question" to start</div>
+                        
+                        <div class="quiz-options-grid" id="quizOptions">
+                            <!-- Options will appear here -->
+                        </div>
+
+                        <div class="quiz-input-group" id="quizInputGroup" style="display: none;">
+                            <input type="text" id="quizTextInput" placeholder="Type your answer...">
+                            <button onclick="checkQuizTextAnswer()">Submit</button>
+                        </div>
+
+                        <div class="quiz-feedback-large" id="quizFeedback"></div>
+                        
+                        <div class="quiz-explanation" id="quizExplanation"></div>
+                    </div>
+
+                    <div class="quiz-stats">
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Correct</span>
+                            <span class="quiz-stat-value" id="quizCorrectCount">0</span>
+                        </div>
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Wrong</span>
+                            <span class="quiz-stat-value" id="quizWrongCount">0</span>
+                        </div>
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Score</span>
+                            <span class="quiz-stat-value" id="quizScore">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🤲 "And We have certainly made the Qur'an easy for remembrance, so is there any who will remember?" — Qur'an 54:17</p>
+        </footer>
+    </div>
+
+    <script src="js/arabic-data.js"></script>
+    <script src="js/arabic.js"></script>
 </body>
 </html>

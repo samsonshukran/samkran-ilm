@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samkran Ilm · 50 Names of Allah</title>
+  <title>Samkran Ilm · 99 Names of Allah</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,14 @@
   <div class="container">
     <header class="header">
       <div class="logo">
-        <h1><span class="arabic-logo">الأسماء الحسنى</span> · 50 Names of Allah</h1>
+        <h1><span class="arabic-logo">الأسماء الحسنى</span> · 99 Names of Allah</h1>
       </div>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="names.html" class="active">Names of Allah</a>
-        <a href="arabic.html">Arabic & Dhikr</a>
-        <a href="juzAmma.html">juz'Amma</a>
-        <a href="dua.html">Dua Collection</a>
-        <a href="edu.html">Learn Arabic</a>
+        <a href="names.html" class="active">99 Names</a>
+        <a href="arabic.html">Learn Arabic</a>
+        <a href="juzAmma.html">Juz 'Amma</a>
+        <a href="dua.html">Duas & Dhikr</a>
       </nav>
     </header>
 
@@ -29,12 +28,13 @@
       <!-- Grid View -->
       <section id="namesGrid">
         <div class="section-header">
-          <h2>🌟 The 50 Beautiful Names</h2>
-          <span class="badge large" id="namesCount">50 names</span>
+          <h2>🌟 The 99 Beautiful Names</h2>
+          <span class="badge large" id="namesCount">99 names</span>
         </div>
         
         <div class="names-grid" id="namesGridContainer">
           <!-- Dynamically filled by JavaScript -->
+          <div class="loading-message">Loading names...</div>
         </div>
       </section>
 
@@ -71,7 +71,7 @@
             
             <div class="detail-row">
               <div class="detail-label">Du'a Example</div>
-              <div class="detail-value dua-example" id="detailDua">Yā Raḥmān irḥamnī wa-rḥam jamīʻ al-muslimīn</div>
+              <div class="detail-value dua-example" id="detailDua">Yā Raḥmān irḥamnī</div>
             </div>
             
             <div class="detail-row">
@@ -98,6 +98,7 @@
     </footer>
   </div>
 
+  <!-- Scripts - Updated with correct file names -->
   <script src="js/namesData.js"></script>
   <script src="js/main.js"></script>
 </body>

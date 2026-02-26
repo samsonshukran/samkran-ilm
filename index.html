@@ -10,19 +10,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest and Theme -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#facc15">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Samkran Ilm">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="mask-icon" href="icons/icon-512.svg" color="#facc15">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#facc15">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Samkran Ilm">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="mask-icon" href="icons/icon-512.svg" color="#facc15">
 
-<!-- PWA Install Button - Add this in your header or sidebar -->
-<button id="installBtn" class="install-btn" style="display: none;">
-  <span class="install-icon">📲</span>
-  <span class="install-text">Install App</span>
-</button>
+  <!-- PWA Install Button -->
+  <button id="installBtn" class="install-btn" style="display: none;">
+    <span class="install-icon">📲</span>
+    <span class="install-text">Install App</span>
+  </button>
 </head>
 <body>
   <div class="container">
@@ -32,11 +32,10 @@
       </div>
       <nav class="nav">
         <a href="index.html" class="active">Home</a>
-        <a href="names.html">Names of Allah</a>
-        <a href="arabic.html">Arabic & Dhikr</a>
+        <a href="names.html">99 Names</a>
+        <a href="arabic.html">Learn Arabic</a>
         <a href="juzAmma.html">Juz 'Amma</a>
-        <a href="dua.html">Dua Collection</a>
-        <a href="edu.html">Learn Arabic</a>
+        <a href="dua.html">Duas & Dhikr</a>
       </nav>
     </header>
 
@@ -128,15 +127,15 @@
       <!-- Quick Stats Row -->
       <div class="stats-row">
         <div class="stat-card">
-          <span class="stat-value">50</span>
+          <span class="stat-value" id="totalNamesCount">99</span>
           <span class="stat-label">Names of Allah</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value">300+</span>
+          <span class="stat-value" id="totalWordsCount">300+</span>
           <span class="stat-label">Qur'anic Words</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value">100+</span>
+          <span class="stat-value" id="totalPhrasesCount">100+</span>
           <span class="stat-label">Islamic Phrases</span>
         </div>
       </div>
@@ -147,8 +146,9 @@
     </footer>
   </div>
 
+  <!-- Scripts - Updated with correct file names -->
   <script src="js/namesData.js"></script>
-  <script src="js/arabicData.js"></script>
+  <script src="js/arabic-data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

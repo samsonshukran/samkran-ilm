@@ -413,7 +413,7 @@ const juzAmmaData = [
         englishTranslation: "The Disbelievers",
         ayahCount: 6,
         revelation: "Makki",
-        audioFile: "Al-Fatihah.mp3",
+        audioFile: "Al-Kafirun.mp3",
         difficulty: "Easy",
         memorized: false,
         progress: 0

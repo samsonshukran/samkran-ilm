@@ -1,5 +1,5 @@
 // ===== MAIN.JS - Samkran Ilm Core Logic =====
-// UPDATED: Fixed all errors, added safe checks, improved error handling
+// UPDATED: Removed deleted file references, maintained dark navy/gold theme
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
@@ -69,6 +69,10 @@ function getHadithDuas() {
     return window.hadithDuas || null;
 }
 
+function getDhikrCollection() {
+    return window.dhikrCollection || null;
+}
+
 // ===== HOME PAGE FUNCTIONS =====
 function initHomePage() {
     console.log('Initializing home page...');
@@ -89,7 +93,6 @@ function initHomePage() {
         safeSetText('dailyNameEvidence', name.evidence || "Qur'an/Sunnah");
     } else {
         console.warn('namesData not available');
-        // Set fallback content
         safeSetText('dailyNameArabic', 'اللَّهُ');
         safeSetText('dailyNameTranslit', 'Allāh');
         safeSetText('dailyNameMeaning', 'The God');
@@ -538,34 +541,7 @@ function initDuaPage() {
         }
     } else {
         console.warn('initDuaSystem not available');
-        
-        // Try to initialize manually
-        const grid = document.getElementById('duasGrid');
-        if (grid && (quranDuas || hadithDuas)) {
-            const allDuas = [...(quranDuas || []), ...(hadithDuas || [])];
-            if (allDuas.length > 0) {
-                renderSimpleDuas(allDuas);
-            }
-        }
     }
-}
-
-function renderSimpleDuas(duas) {
-    const grid = document.getElementById('duasGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    
-    duas.slice(0, 10).forEach(dua => {
-        const card = document.createElement('div');
-        card.className = 'dua-card';
-        card.innerHTML = `
-            <div class="arabic-text">${dua.arabic || ''}</div>
-            <div class="transliteration">${dua.transliteration || ''}</div>
-            <div class="swahili-text">${dua.swahili || dua.meaning || ''}</div>
-        `;
-        grid.appendChild(card);
-    });
 }
 
 // ===== TABS =====
@@ -666,6 +642,7 @@ function checkDataLoaded() {
     console.log('juzAmmaData:', getJuzAmmaData() ? `✅ Loaded (${getJuzAmmaData().length})` : '❌ NOT LOADED');
     console.log('quranDuas:', getQuranDuas() ? `✅ Loaded (${getQuranDuas().length})` : '❌ NOT LOADED');
     console.log('hadithDuas:', getHadithDuas() ? `✅ Loaded (${getHadithDuas().length})` : '❌ NOT LOADED');
+    console.log('dhikrCollection:', getDhikrCollection() ? `✅ Loaded (${getDhikrCollection().length})` : '❌ NOT LOADED');
     console.log('=======================');
 }
 

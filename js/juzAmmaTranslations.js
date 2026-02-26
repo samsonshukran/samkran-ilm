@@ -1,3 +1,4 @@
+
 // ===== JUZ 'AMMA COMPLETE DATA =====
 // All 37 Surahs (78-114) with Transliteration and Swahili Translation
 

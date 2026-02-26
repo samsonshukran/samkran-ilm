@@ -72,6 +72,20 @@
       "type": "image/jpeg",
       "platform": "wide",
       "label": "Juz 'Amma - Quran Audio Player"
+    },
+    {
+      "src": "screenshots/names.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "99 Names of Allah"
+    },
+    {
+      "src": "screenshots/arabic.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Arabic Learning"
     }
   ],
   "shortcuts": [
@@ -90,10 +104,17 @@
       "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Arabic Learning",
-      "short_name": "EDU",
-      "description": "Learn Arabic letters and phrases",
-      "url": "edu.html",
+      "name": "Learn Arabic",
+      "short_name": "Arabic",
+      "description": "Learn Arabic letters, words, and phrases",
+      "url": "arabic.html",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Duas & Dhikr",
+      "short_name": "Duas",
+      "description": "Authentic duas and daily dhikr",
+      "url": "dua.html",
       "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
     }
   ],
