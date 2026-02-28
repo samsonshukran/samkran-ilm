@@ -2941,3 +2941,212 @@ body {
         border: 1px solid #000;
     }
 }
+
+
+/* Add these mobile-specific styles at the end of your style.css */
+
+/* Base mobile styles */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        overflow-x: hidden;
+    }
+
+    /* Header navigation for mobile */
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .nav a {
+        padding: 8px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* Arabic header */
+    .arabic-header h2 {
+        font-size: 1.8em;
+        word-break: break-word;
+    }
+
+    /* Progress bars - stack vertically on mobile */
+    .learning-progress {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    /* Tabs - make them scrollable horizontally */
+    .learning-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 10px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .learning-tabs::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    /* Letters grid - adjust for mobile */
+    .letters-master-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .letter-card {
+        padding: 10px 5px;
+    }
+
+    .letter-arabic {
+        font-size: 28px;
+    }
+
+    /* Words grid */
+    .words-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+    }
+
+    .word-card {
+        padding: 12px;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box, .category-select {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on mobile */
+    }
+
+    /* Conversation container */
+    .conversation-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .conversation-bubble {
+        max-width: 90%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Quiz section */
+    .quiz-controls-panel {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quiz-options-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .quiz-card-large {
+        padding: 15px;
+    }
+
+    /* Practice section */
+    .practice-input-group {
+        flex-direction: column;
+    }
+
+    .practice-input-group input,
+    .practice-input-group button {
+        width: 100%;
+        border-radius: 8px !important;
+    }
+
+    /* Writing practice */
+    .writing-practice {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .writing-input {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    .letters-master-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .words-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .arabic-header h2 {
+        font-size: 1.5em;
+    }
+
+    .tab-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .conversation-bubble {
+        max-width: 100%;
+    }
+}
+
+/* Fix for touch interactions */
+.tab-btn, 
+.letter-card, 
+.word-card,
+.quiz-option,
+button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tab-btn:active,
+.letter-card:active,
+.word-card:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+/* Ensure text doesn't overflow */
+h1, h2, h3, h4, p, span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Fix for 100vh on mobile */
+.arabic-page {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+html {
+    height: -webkit-fill-available;
+}

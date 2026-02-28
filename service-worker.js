@@ -4,7 +4,7 @@
 // FIXED: Updated audio file names to match your exact naming convention
 
 const CACHE_VERSION = "v1.0.3";
-const CACHE_NAME = `samkran-ilm-${CACHE_VERSION}`;
+const CACHE_NAME = `yusuf-${CACHE_VERSION}`;
 
 // Static assets that are essential for the app to work offline
 const STATIC_ASSETS = [
