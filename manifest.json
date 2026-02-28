@@ -1,124 +1,158 @@
 {
-  "name": "Yusuf -Islamic Learning",
+  "name": "Yusuf - Islamic Learning",
   "short_name": "Yusuf",
-  "description": "Learn Quran, Arabic, Dhikr, and 99 Names of Allah",
-  "start_url": "index.html",
+  "description": "Learn Quran, Arabic, 99 Names of Allah, Duas, and Daily Dhikr",
+  "start_url": "/index.html",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "fullscreen"],
   "background_color": "#0f172a",
   "theme_color": "#facc15",
-  "orientation": "portrait",
+  "orientation": "any",
   "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "religion", "books", "spirituality"],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "offline_enabled": true,
+  
   "icons": [
     {
-      "src": "icons/icon-72.png",
+      "src": "/icons/icon-72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-96.png",
+      "src": "/icons/icon-96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-128.png",
+      "src": "/icons/icon-128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-144.png",
+      "src": "/icons/icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-152.png",
+      "src": "/icons/icon-152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-384.png",
+      "src": "/icons/icon-384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
+
   "screenshots": [
     {
-      "src": "screenshots/home.jpg",
+      "src": "/screenshots/home.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "platform": "wide",
-      "label": "Home Screen - Daily Dhikr and Learning"
+      "label": "Home Screen - Daily Dhikr and Learning Dashboard"
     },
     {
-      "src": "screenshots/juzamma.jpg",
+      "src": "/screenshots/names.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "platform": "wide",
-      "label": "Juz 'Amma - Quran Audio Player"
+      "label": "99 Names of Allah with Meanings and Reflections"
     },
     {
-      "src": "screenshots/names.jpg",
+      "src": "/screenshots/arabic.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "platform": "wide",
-      "label": "99 Names of Allah"
+      "label": "Arabic Learning - Quranic Words, Phrases, and Dhikr"
     },
     {
-      "src": "screenshots/arabic.jpg",
+      "src": "/screenshots/juzamma.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "platform": "wide",
-      "label": "Arabic Learning"
+      "label": "Juz 'Amma - Quran Audio Player with Translations"
+    },
+    {
+      "src": "/screenshots/duas.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Dua Collection - Authentic Duas from Quran & Hadith"
+    },
+    {
+      "src": "/screenshots/offline.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Offline Mode - Access Content Without Internet"
     }
   ],
+
   "shortcuts": [
     {
       "name": "Juz 'Amma",
-      "short_name": "Juz",
-      "description": "Listen and memorize Quran",
-      "url": "juzAmma.html",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "short_name": "Quran",
+      "description": "Listen to Quran with Swahili translation",
+      "url": "/juzAmma.html",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
       "name": "99 Names",
       "short_name": "Names",
-      "description": "Learn Allah's names",
-      "url": "names.html",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "description": "Learn Allah's beautiful names",
+      "url": "/names.html",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Learn Arabic",
+      "name": "Arabic & Dhikr",
       "short_name": "Arabic",
-      "description": "Learn Arabic letters, words, and phrases",
-      "url": "arabic.html",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "description": "Learn Quranic words, phrases, and daily dhikr",
+      "url": "/arabic.html",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Duas & Dhikr",
+      "name": "Dua Collection",
       "short_name": "Duas",
-      "description": "Authentic duas and daily dhikr",
-      "url": "dua.html",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "description": "Authentic duas from Quran and Hadith",
+      "url": "/dua.html",
+      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     }
   ],
-  "categories": ["education", "religion", "books"],
-  "lang": "en",
-  "dir": "ltr"
+
+  "features": [
+    "Offline Access",
+    "Audio Playback",
+    "Bookmarks",
+    "Personal Notes",
+    "Progress Tracking"
+  ],
+
+  "developer": {
+    "name": "Yusuf",
+    "website": "https://yusuf.app"
+  }
 }
