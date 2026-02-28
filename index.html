@@ -150,5 +150,40 @@
   <script src="js/namesData.js"></script>
   <script src="js/arabic-data.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('✅ Service Worker registered'))
+      .catch(err => console.log('❌ Service Worker error:', err));
+  }
+</script>
+
+<div id="install-btn" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; background: #facc15; color: #0f172a; text-align: center; padding: 15px; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 1000;">
+  📲 Install App
+</div>
+
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('install-btn');
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+  
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log('Install result:', outcome);
+  });
+  
+  window.addEventListener('appinstalled', () => {
+    installBtn.style.display = 'none';
+  });
+</script>
 </body>
 </html>
