@@ -89,7 +89,17 @@ body {
   margin-bottom: 2.5rem;
 }
 
-.card {
+.card,
+.dua-card,
+.name-card,
+.word-card,
+.dhikr-card,
+.tool-card,
+.stat-card,
+.root-card,
+.phrase-card,
+.sentence-card,
+.quiz-card-large {
   background: #1a2436;
   border-radius: 32px;
   padding: 1.8rem 1.5rem;
@@ -98,7 +108,16 @@ body {
   transition: transform 0.2s, border-color 0.2s;
 }
 
-.card:hover {
+.card:hover,
+.dua-card:hover,
+.name-card:hover,
+.word-card:hover,
+.dhikr-card:hover,
+.tool-card:hover,
+.stat-card:hover,
+.root-card:hover,
+.phrase-card:hover,
+.sentence-card:hover {
   border-color: #facc1550;
   transform: translateY(-4px);
 }
@@ -112,13 +131,17 @@ body {
   padding-left: 1rem;
 }
 
-.card-header h2 {
+.card-header h2,
+.dua-header h2,
+.dhikr-header h2,
+.tools-header h2 {
   font-size: 1.3rem;
   font-weight: 500;
   color: #facc15;
 }
 
-.card-icon {
+.card-icon,
+.header-icon {
   font-size: 1.8rem;
 }
 
@@ -149,7 +172,8 @@ body {
   padding-bottom: 0.8rem;
 }
 
-.meaning {
+.meaning,
+.swahili-text {
   font-size: 1.1rem;
   color: #a0afc0;
   text-align: center;
@@ -181,25 +205,30 @@ body {
   margin-right: 0.5rem;
 }
 
-.evidence-badge {
-  background: #facc1520;
-  color: #facc15;
-  padding: 0.3rem 1rem;
-  border-radius: 40px;
-  font-size: 0.85rem;
-  display: inline-block;
-  align-self: flex-start;
-  border: 1px solid #facc1550;
-}
-
+.evidence-badge,
+.source-badge,
+.category-badge,
 .badge {
   background: #facc1520;
   color: #facc15;
-  padding: 0.2rem 0.8rem;
+  padding: 0.3rem 1rem;
   border-radius: 30px;
-  font-size: 0.85rem;
-  border: 1px solid #facc1550;
+  font-size: 0.8rem;
+  border: 1px solid #facc1540;
+  display: inline-block;
   white-space: nowrap;
+}
+
+.source-badge.quran {
+  background: #4ade8020;
+  color: #4ade80;
+  border-color: #4ade8040;
+}
+
+.source-badge.hadith {
+  background: #60a5fa20;
+  color: #60a5fa;
+  border-color: #60a5fa40;
 }
 
 .badge.large {
@@ -262,7 +291,8 @@ body {
   text-align: center;
 }
 
-.reset-btn {
+.reset-btn,
+.counter-control-btn {
   background: transparent;
   border: 1px solid #facc1540;
   color: #cbd5e1;
@@ -272,7 +302,8 @@ body {
   transition: 0.1s;
 }
 
-.reset-btn:hover {
+.reset-btn:hover,
+.counter-control-btn:hover {
   background: #facc1510;
   border-color: #facc15;
 }
@@ -508,7 +539,9 @@ body {
 }
 
 /* ===== TABS (general) ===== */
-.tabs-container {
+.tabs-container,
+.main-tabs-container,
+.learning-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -517,9 +550,15 @@ body {
   padding: 0.8rem;
   border-radius: 60px;
   border: 1px solid #2d3a4f;
+  justify-content: center;
 }
 
-.tab-btn {
+.tab-btn,
+.main-tab-btn,
+.learning-tabs .tab-btn,
+.filter-btn,
+.category-pill,
+.dhikr-cat-btn {
   background: transparent;
   border: none;
   color: #94a3b8;
@@ -528,16 +567,27 @@ body {
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.2s;
-  flex: 1;
+  flex: 0 1 auto;
   min-width: 120px;
+  white-space: nowrap;
 }
 
-.tab-btn:hover {
+.tab-btn:hover,
+.main-tab-btn:hover,
+.learning-tabs .tab-btn:hover,
+.filter-btn:hover,
+.category-pill:hover,
+.dhikr-cat-btn:hover {
   background: #2d3a4f;
   color: white;
 }
 
-.tab-btn.active {
+.tab-btn.active,
+.main-tab-btn.active,
+.learning-tabs .tab-btn.active,
+.filter-btn.active,
+.category-pill.active,
+.dhikr-cat-btn.active {
   background: #facc15;
   color: #0f172a;
   font-weight: 600;
@@ -547,8 +597,9 @@ body {
   display: block;
 }
 
-.tab-content.hidden {
-  display: none;
+.tab-content.hidden,
+.main-tab-content.hidden {
+  display: none !important;
 }
 
 /* ===== SEARCH BOX ===== */
@@ -1299,51 +1350,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Learning Tabs */
-.learning-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  background: #1a2436;
-  padding: 0.8rem;
-  border-radius: 60px;
-  border: 1px solid #2d3a4f;
-}
-
-.learning-tabs .tab-btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background: transparent;
-  color: #94a3b8;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 40px;
-  transition: all 0.2s ease;
-  font-size: 1rem;
-}
-
-.learning-tabs .tab-btn:hover {
-  background: #2d3a4f;
-  color: white;
-}
-
-.learning-tabs .tab-btn.active {
-  background: #facc15;
-  color: #0f172a;
-  font-weight: 600;
-}
-
-.learning-tab-content {
-  display: none;
-  animation: fadeIn 0.5s ease;
-}
-
-.learning-tab-content.active {
-  display: block;
-}
-
 /* Letters Master Grid */
 .letters-master-grid {
   display: grid;
@@ -1584,47 +1590,6 @@ body {
   background: #3d4e66;
 }
 
-/* Word Cards (Learning) */
-.word-card {
-  background: #1a2436;
-  border: 1px solid #2d3a4f;
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.word-card:hover {
-  transform: translateY(-5px);
-  border-color: #facc15;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.word-arabic {
-  font-family: 'Amiri', serif;
-  font-size: 2rem;
-  color: #facc15;
-  margin-bottom: 0.5rem;
-}
-
-.word-meaning {
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 0.25rem;
-}
-
-.word-category {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: #facc1520;
-  color: #facc15;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  border: 1px solid #facc1540;
-}
-
 /* Flashcard */
 .word-flashcard {
   position: fixed;
@@ -1710,106 +1675,6 @@ body {
 
 .close-flashcard:hover {
   color: #facc15;
-}
-
-/* Phrase Cards */
-.phrase-card {
-  background: #1a2436;
-  border: 1px solid #2d3a4f;
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.phrase-card:hover {
-  transform: translateY(-5px);
-  border-color: #facc15;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.phrase-arabic-large {
-  font-family: 'Amiri', serif;
-  font-size: 2.2rem;
-  color: #facc15;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-  direction: rtl;
-}
-
-.phrase-translit {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  font-style: italic;
-}
-
-.phrase-meaning-large {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 0.5rem;
-}
-
-.phrase-usage {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  background: #2d3a4f;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #94a3b8;
-}
-
-/* Sentence Cards */
-.sentences-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.sentence-card {
-  background: #1a2436;
-  border: 1px solid #2d3a4f;
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.sentence-card:hover {
-  transform: translateY(-5px);
-  border-color: #facc15;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.sentence-arabic {
-  font-family: 'Amiri', serif;
-  font-size: 1.8rem;
-  color: #facc15;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-  direction: rtl;
-}
-
-.sentence-translit {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  font-style: italic;
-}
-
-.sentence-meaning {
-  color: #e2e8f0;
-  margin-bottom: 0.5rem;
-}
-
-.sentence-type {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  background: #facc1520;
-  color: #facc15;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  border: 1px solid #facc1540;
 }
 
 /* Conversation Container */
@@ -2238,10 +2103,9 @@ body {
 /* Filter Bar (general) */
 .filter-bar {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
 }
 
 .category-select {
@@ -2255,11 +2119,15 @@ body {
 }
 
 /* ===== DUA TAB SPECIFIC STYLES ===== */
-.dua-container {
+.dua-container,
+.dhikr-container,
+.tools-container {
   padding: 1rem 0;
 }
 
-.dua-header {
+.dua-header,
+.dhikr-header,
+.tools-header {
   text-align: center;
   margin-bottom: 2rem;
   padding: 2rem;
@@ -2274,7 +2142,9 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-.dua-header h2 {
+.dua-header h2,
+.dhikr-header h2,
+.tools-header h2 {
   font-size: 2.2rem;
   color: #facc15;
   margin-bottom: 0.5rem;
@@ -2286,6 +2156,7 @@ body {
   font-size: 1.1rem;
 }
 
+/* Stats bar (optional) */
 .stats-bar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -2320,68 +2191,7 @@ body {
   color: #94a3b8;
 }
 
-.filter-buttons {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  background: #1e2a3a;
-  border: 1px solid #2d3a4f;
-  color: #94a3b8;
-  padding: 0.8rem 1.5rem;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.2s;
-  font-weight: 500;
-}
-
-.filter-btn:hover {
-  border-color: #facc15;
-  color: white;
-  background: #2d3a4f;
-}
-
-.filter-btn.active {
-  background: #facc15;
-  color: #0f172a;
-  border-color: #facc15;
-  font-weight: 600;
-}
-
-.category-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
-}
-
-.category-pill {
-  background: transparent;
-  border: 1px solid #2d3a4f;
-  color: #94a3b8;
-  padding: 0.5rem 1.2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.category-pill:hover {
-  border-color: #facc15;
-  color: white;
-}
-
-.category-pill.active {
-  background: #facc15;
-  color: #0f172a;
-  border-color: #facc15;
-  font-weight: 500;
-}
-
+/* Prophet strip (optional) */
 .prophet-strip {
   background: #1a2436;
   border-radius: 60px;
@@ -2432,6 +2242,7 @@ body {
   font-weight: 600;
 }
 
+/* Duas grid */
 .duas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -2745,73 +2556,7 @@ body {
   }
 }
 
-/* ===== MAIN TABS (for Duas/Dhikr/Tools) ===== */
-.main-tabs-container {
-  display: flex;
-  gap: 0.5rem;
-  margin: 2rem 0;
-  background: #1a2436;
-  padding: 0.8rem;
-  border-radius: 60px;
-  border: 1px solid #2d3a4f;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.main-tab-btn {
-  background: transparent;
-  border: none;
-  color: #94a3b8;
-  padding: 0.7rem 1.5rem;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-  flex: 0 1 auto;
-  min-width: 120px;
-  white-space: nowrap;
-}
-
-.main-tab-btn:hover {
-  background: #2d3a4f;
-  color: white;
-}
-
-.main-tab-btn.active {
-  background: #facc15;
-  color: #0f172a;
-  font-weight: 600;
-}
-
-.main-tab-content {
-  display: block;
-}
-
-.main-tab-content.hidden {
-  display: none !important;
-}
-
 /* ===== DHIKR TAB ===== */
-.dhikr-container, .tools-container {
-  padding: 1rem 0;
-}
-
-.dhikr-header, .tools-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  background: linear-gradient(145deg, #1a2436, #0f1a2a);
-  border-radius: 60px;
-  border: 1px solid #2d3a4f;
-}
-
-.dhikr-header h2, .tools-header h2 {
-  font-size: 2.2rem;
-  color: #facc15;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
 .dhikr-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

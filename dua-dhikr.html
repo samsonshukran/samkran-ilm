@@ -9,7 +9,239 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Additional styles for the enhanced calendar */
+        /* ===== UNIFORM COLOR OVERRIDES ===== */
+        /* Ensure all cards have the same dark navy background */
+        .dua-card,
+        .dhikr-card,
+        .tool-card,
+        .card,
+        .name-card,
+        .word-card,
+        .stat-card,
+        .root-card,
+        .phrase-card,
+        .sentence-card {
+            background: #1a2436 !important;
+            border: 1px solid #2d3a4f !important;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        .dua-card:hover,
+        .dhikr-card:hover,
+        .tool-card:hover,
+        .card:hover,
+        .name-card:hover,
+        .word-card:hover,
+        .stat-card:hover,
+        .root-card:hover,
+        .phrase-card:hover,
+        .sentence-card:hover {
+            border-color: #facc1550 !important;
+            transform: translateY(-4px);
+        }
+
+        /* Main tab buttons – gold theme */
+        .main-tab-btn {
+            background: transparent !important;
+            border: 1px solid #2d3a4f !important;
+            color: #94a3b8 !important;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 30px !important;
+            cursor: pointer;
+            font-size: 1rem !important;
+        }
+        .main-tab-btn:hover {
+            border-color: #facc15 !important;
+            color: white !important;
+            background: #2d3a4f !important;
+        }
+        .main-tab-btn.active {
+            background: #facc15 !important;
+            color: #0f172a !important;
+            border-color: #facc15 !important;
+            font-weight: 600 !important;
+            
+        }
+
+        /* Filter buttons and category pills – match dhikr category buttons */
+        .filter-btn,
+        .category-pill,
+        .dhikr-cat-btn {
+            background: transparent !important;
+            border: 1px solid #2d3a4f !important;
+            color: #94a3b8 !important;
+            padding: 0.5rem 1.2rem !important;
+            border-radius: 30px !important;
+            cursor: pointer;
+            font-size: 0.95rem !important;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover,
+        .category-pill:hover,
+        .dhikr-cat-btn:hover {
+            border-color: #facc15 !important;
+            color: white !important;
+            background: #2d3a4f !important;
+        }
+
+        .filter-btn.active,
+        .category-pill.active,
+        .dhikr-cat-btn.active {
+            background: #facc15 !important;
+            color: #0f172a !important;
+            border-color: #facc15 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Search box consistent */
+        .search-box {
+            background: #1e2a3a !important;
+            border: 1px solid #3d4e66 !important;
+            border-radius: 60px;
+            padding: 0.8rem 1.5rem;
+            color: white;
+        }
+
+        .search-box:focus {
+            border-color: #facc15 !important;
+        }
+
+        /* Dua card text colors */
+        .dua-card .arabic-text {
+            color: white !important;
+        }
+        .dua-card .transliteration {
+            color: #facc15 !important;
+        }
+        .dua-card .swahili-text {
+            color: white !important;
+            background: #0f172a80 !important;
+            border-left: 3px solid #facc1560 !important;
+        }
+        .dua-card .reference {
+            color: #64748b !important;
+        }
+
+        /* Dhikr display text colors */
+        .dhikr-arabic {
+            color: white !important;
+        }
+        .dhikr-translit {
+            color: #facc15 !important;
+        }
+        .dhikr-meaning {
+            color: white !important;
+        }
+
+        /* Header and section headers consistent – gold */
+        .dua-header h2,
+        .dhikr-header h2,
+        .tools-header h2,
+        .section-title {
+            color: #facc15 !important;
+        }
+
+        /* Badges */
+        .source-badge,
+        .category-badge,
+        .badge {
+            background: #facc1520 !important;
+            color: #facc15 !important;
+            border: 1px solid #facc1540 !important;
+        }
+        .source-badge.quran {
+            background: #4ade8020 !important;
+            color: #4ade80 !important;
+            border-color: #4ade8040 !important;
+        }
+        .source-badge.hadith {
+            background: #60a5fa20 !important;
+            color: #60a5fa !important;
+            border-color: #60a5fa40 !important;
+        }
+
+        /* Favorite button */
+        .favorite-btn {
+            color: #64748b !important;
+        }
+        .favorite-btn.active {
+            color: #f43f5e !important;
+        }
+
+        /* No results */
+        .no-results {
+            background: #1a2436 !important;
+            border: 1px solid #2d3a4f !important;
+        }
+
+        /* ===== PRAYER TOOLS TAB READABILITY FIXES ===== */
+        /* Month items */
+        .month-item {
+            background: #1e2a3a !important;
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            border: 1px solid #2d3a4f !important;
+            color: white !important;
+        }
+
+        /* Important dates list */
+        .calendar-events li {
+            color: white !important;
+        }
+        .calendar-events li span {
+            color: #facc15 !important;
+            margin-right: 0.5rem;
+        }
+
+        /* Prayer times grid */
+        .prayer-times-grid div {
+            background: #1e2a3a !important;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2d3a4f;
+            color: white !important;
+        }
+        .prayer-times-grid div strong {
+            color: #facc15 !important;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Rak'ah table */
+        .rakaah-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            overflow-x: auto;
+            display: block;
+            color: white !important;
+        }
+        .rakaah-table th,
+        .rakaah-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid #2d3a4f !important;
+            color: white !important;
+        }
+        .rakaah-table th {
+            background: #facc1520 !important;
+            color: #facc15 !important;
+            font-weight: 600;
+        }
+
+        /* Footnotes and calculation method */
+        .calculation-method,
+        .footnote {
+            color: #94a3b8 !important;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Additional calendar styles remain */
         .calendar-months {
             margin: 1.5rem 0;
         }
@@ -19,29 +251,9 @@
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
-        .month-item {
-            background: #1e2a3a;
-            padding: 0.5rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.95rem;
-            border: 1px solid #2d3a4f;
-        }
         .calendar-events ul {
             list-style: none;
             padding: 0;
-        }
-        .calendar-events li {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #2d3a4f;
-            color: #e2e8f0;
-        }
-        .calendar-events li:last-child {
-            border-bottom: none;
-        }
-        .calendar-events li span {
-            color: #facc15;
-            margin-right: 0.5rem;
         }
     </style>
 </head>
@@ -153,7 +365,7 @@
             </div>
         </div>
 
-        <!-- TOOLS TAB (Enhanced Calendar) -->
+        <!-- TOOLS TAB (Islamic Calendar - Months & Important Dates only) -->
         <div id="tools-tab" class="main-tab-content hidden">
             <div class="tools-container">
                 <div class="tools-header">
@@ -162,10 +374,9 @@
                     <p class="header-subtitle">Islamic calendar, prayer times, and rak'ah guide</p>
                 </div>
                 
-                <!-- Islamic Calendar Card (Enhanced) -->
+                <!-- Islamic Calendar Card (Months & Important Dates only) -->
                 <div class="tool-card">
                     <h3>📅 Islamic Calendar</h3>
-                    <div class="calendar-display" id="islamicCalendar">Loading Hijri date...</div>
                     
                     <div class="calendar-months">
                         <h4 style="color: #facc15; margin-bottom: 0.5rem;">Months of the Hijri Year</h4>
@@ -555,7 +766,7 @@
             });
         });
 
-        // ========== TOOLS TAB (Enhanced Calendar) ==========
+        // ========== TOOLS TAB (Islamic Calendar - Months & Important Dates only) ==========
         // Islamic months list
         const islamicMonths = [
             "Muḥarram", "Ṣafar", "Rabīʿ al-Awwal", "Rabīʿ al-Thānī",
@@ -576,39 +787,6 @@
             { name: "Laylat al-Miʿrāj", date: "27 Rajab", icon: "🕌" },
             { name: "Laylat al-Raghāʾib", date: "1st Fri of Rajab", icon: "🌟" }
         ];
-
-        // Approximate Hijri date (simple calculation)
-        function getApproximateHijriDate() {
-            const now = new Date();
-            // Base date: 1 Muharram 1445 (approx July 19, 2023)
-            const baseGregorian = new Date(2023, 6, 19); // July 19, 2023
-            const baseHijri = { year: 1445, month: 0, day: 1 }; // Muharram 1
-
-            // Difference in days
-            const diffDays = Math.floor((now - baseGregorian) / (1000 * 60 * 60 * 24));
-            
-            // Rough estimate: each Hijri month ~29.53 days
-            let totalDays = baseHijri.day - 1 + diffDays;
-            let hijriYear = baseHijri.year;
-            let hijriMonth = baseHijri.month;
-            
-            // Simple increment (this is very approximate, not accurate for production)
-            while (totalDays >= 30) {
-                totalDays -= 30;
-                hijriMonth++;
-                if (hijriMonth >= 12) {
-                    hijriMonth = 0;
-                    hijriYear++;
-                }
-            }
-            // For simplicity, we'll just show a fixed approximate date with a note
-            // Using a dynamic calculation is complex; for this demo, we'll show a static date
-            return `15 Ramaḍān 1445 AH (approx)`;
-        }
-
-        // Populate Islamic calendar
-        const islamicCalendarEl = document.getElementById('islamicCalendar');
-        islamicCalendarEl.textContent = getApproximateHijriDate();
 
         // Populate months grid
         const monthsGrid = document.getElementById('islamicMonths');
