@@ -49,6 +49,7 @@
             border-radius: 30px !important;
             cursor: pointer;
             font-size: 1rem !important;
+            margin: 0.25rem !important;
         }
         .main-tab-btn:hover {
             border-color: #facc15 !important;
@@ -60,7 +61,6 @@
             color: #0f172a !important;
             border-color: #facc15 !important;
             font-weight: 600 !important;
-            
         }
 
         /* Filter buttons and category pills – match dhikr category buttons */
@@ -75,6 +75,7 @@
             cursor: pointer;
             font-size: 0.95rem !important;
             transition: all 0.2s;
+            margin: 0.25rem !important;
         }
 
         .filter-btn:hover,
@@ -101,6 +102,7 @@
             border-radius: 60px;
             padding: 0.8rem 1.5rem;
             color: white;
+            margin: 0.5rem 0 !important;
         }
 
         .search-box:focus {
@@ -124,17 +126,29 @@
         }
 
         /* ===== DHIKR TAB SPECIFIC STYLING ===== */
+        .dhikr-container {
+            padding: 1rem 0;
+        }
+
         /* Stats row */
         .dhikr-stats {
             background: #1a2436 !important;
             border: 1px solid #2d3a4f !important;
             border-radius: 60px;
             padding: 1.5rem;
+            margin-bottom: 2rem !important;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .dhikr-stat-item {
+            text-align: center;
         }
         .dhikr-stat-item .stat-number {
             color: #facc15 !important;
             font-size: 2rem;
             font-weight: 600;
+            display: block;
         }
         .dhikr-stat-item .stat-label {
             color: #94a3b8 !important;
@@ -147,22 +161,30 @@
             border: 1px solid #2d3a4f !important;
             border-radius: 40px;
             padding: 2rem;
+            margin-bottom: 2rem !important;
         }
 
         /* Dhikr display text */
+        .dhikr-display {
+            text-align: center;
+            margin-bottom: 2rem !important;
+        }
         .dhikr-arabic {
             color: white !important;
             font-family: 'Amiri', serif;
             font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
         .dhikr-translit {
             color: #facc15 !important;
             font-size: 1.3rem;
             font-style: italic;
+            margin-bottom: 0.5rem;
         }
         .dhikr-meaning {
             color: white !important;
             font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
         .dhikr-recommended {
             background: #facc1520 !important;
@@ -174,6 +196,17 @@
         }
 
         /* Counter section */
+        .dhikr-counter-section {
+            text-align: center;
+            margin-bottom: 2rem !important;
+        }
+        .counter-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
         .counter-large .counter-btn {
             background: #facc15 !important;
             border: none;
@@ -184,9 +217,11 @@
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
+            transition: 0.2s;
         }
         .counter-large .counter-btn:hover {
             background: #ffd966 !important;
+            transform: scale(1.05);
         }
         .counter-large .counter-value {
             color: white !important;
@@ -196,6 +231,13 @@
             text-align: center;
         }
 
+        .counter-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
         .counter-control-btn {
             background: transparent !important;
             border: 1px solid #facc1540 !important;
@@ -203,6 +245,7 @@
             padding: 0.5rem 1.5rem;
             border-radius: 30px;
             cursor: pointer;
+            transition: 0.2s;
         }
         .counter-control-btn:hover {
             border-color: #facc15 !important;
@@ -210,6 +253,13 @@
             background: #2d3a4f !important;
         }
 
+        .counter-presets {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
         .preset-btn {
             background: transparent !important;
             border: 1px solid #facc1540 !important;
@@ -217,6 +267,7 @@
             padding: 0.5rem 1.5rem;
             border-radius: 30px;
             cursor: pointer;
+            transition: 0.2s;
         }
         .preset-btn:hover {
             border-color: #facc15 !important;
@@ -228,6 +279,7 @@
             height: 8px;
             border-radius: 10px;
             overflow: hidden;
+            margin: 1rem 0;
         }
         .progress-bar {
             background: linear-gradient(90deg, #facc15, #4ade80) !important;
@@ -236,6 +288,13 @@
         }
 
         /* Navigation */
+        .dhikr-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 !important;
+            flex-wrap: wrap;
+        }
         .dhikr-navigation .nav-btn {
             background: #1e2a3a !important;
             border: 1px solid #facc1540 !important;
@@ -243,6 +302,8 @@
             padding: 0.6rem 2rem;
             border-radius: 40px;
             cursor: pointer;
+            transition: 0.2s;
+            min-width: 120px;
         }
         .dhikr-navigation .nav-btn:hover {
             background: #2a3a50 !important;
@@ -251,14 +312,25 @@
         .dhikr-position {
             color: #94a3b8 !important;
             font-size: 1.1rem;
+            align-self: center;
         }
 
-        /* Category buttons (already styled above) */
-        .dhikr-cat-btn {
-            /* inherits from .filter-btn etc. */
+        /* Category filters */
+        .dhikr-categories {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 !important;
+            justify-content: center;
         }
 
         /* Dhikr grid cards */
+        .dhikr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem !important;
+        }
         .dhikr-card {
             background: #1a2436 !important;
             border: 1px solid #2d3a4f !important;
@@ -276,6 +348,7 @@
             font-family: 'Amiri', serif;
             font-size: 1.5rem;
             color: #facc15 !important;
+            margin-bottom: 0.5rem;
         }
         .dhikr-card-meaning {
             font-size: 0.9rem;
@@ -350,6 +423,12 @@
         }
 
         /* Prayer times grid */
+        .prayer-times-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
         .prayer-times-grid div {
             background: #1e2a3a !important;
             padding: 0.8rem;
@@ -407,6 +486,61 @@
         .calendar-events ul {
             list-style: none;
             padding: 0;
+        }
+
+        /* ===== RESPONSIVE SPACING FIXES ===== */
+        @media (max-width: 768px) {
+            .dhikr-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .counter-large {
+                gap: 1rem;
+            }
+            .counter-large .counter-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .counter-large .counter-value {
+                font-size: 2.5rem;
+                min-width: 60px;
+            }
+            .dhikr-navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            .dhikr-navigation .nav-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+            .dhikr-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .main-tab-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dhikr-main-card {
+                padding: 1.5rem;
+            }
+            .counter-large {
+                flex-wrap: wrap;
+            }
+            .counter-controls, .counter-presets {
+                flex-direction: column;
+                align-items: center;
+            }
+            .counter-control-btn, .preset-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+            .dhikr-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
